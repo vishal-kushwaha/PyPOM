@@ -1,0 +1,10 @@
+-r ./package.txt
+-e .
+coveralls
+mock
+pytest-cov
+sphinx
+sphinx-rtd-theme
+towncrier
+ruff-lsp
+debugpy
