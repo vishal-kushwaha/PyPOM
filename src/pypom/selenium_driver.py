@@ -5,16 +5,14 @@
 
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver import (
-    Android,
-    BlackBerry,
     Chrome,
     Edge,
     Firefox,
     Ie,
-    Opera,
-    PhantomJS,
     Remote,
     Safari,
+    WPEWebKit,
+    WebKitGTK,
 )
 from selenium.webdriver.support.events import EventFiringWebDriver
 from selenium.webdriver.support.ui import WebDriverWait
@@ -25,7 +23,7 @@ from .interfaces import IDriver
 
 
 class ISelenium(Interface):
-    """ Marker interface for Selenium"""
+    """Marker interface for Selenium"""
 
 
 @implementer(IDriver)
@@ -119,25 +117,23 @@ class Selenium(object):
 
 
 def register():
-    """ Register the Selenium specific driver implementation.
+    """Register the Selenium specific driver implementation.
 
-        This register call is performed by the init module if
-        selenium is available.
+    This register call is performed by the init module if
+    selenium is available.
     """
     registerDriver(
         ISelenium,
         Selenium,
         class_implements=[
-            Firefox,
             Chrome,
-            Ie,
             Edge,
-            Opera,
-            Safari,
-            BlackBerry,
-            PhantomJS,
-            Android,
-            Remote,
             EventFiringWebDriver,
+            Firefox,
+            Ie,
+            Remote,
+            Safari,
+            WPEWebKit,
+            WebKitGTK,
         ],
     )
