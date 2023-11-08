@@ -17,7 +17,7 @@ else:
 
 
 def iterable(arg):
-    if isinstance(arg, collections.Iterable) and not isinstance(arg, str):
+    if isinstance(arg, collections.abc.Iterable) and not isinstance(arg, str):
         return arg
     return [arg]
 
@@ -96,9 +96,7 @@ class Page(WebView):
         """
         url = self.base_url
         if self.URL_TEMPLATE is not None:
-            url = urlparse.urljoin(
-                self.base_url, self.URL_TEMPLATE.format(**self.url_kwargs)
-            )
+            url = urlparse.urljoin(self.base_url, self.URL_TEMPLATE.format(**self.url_kwargs))
 
         if not url:
             return None
