@@ -214,6 +214,7 @@ def test_wait_for_page_empty_base_url(driver):
     assert isinstance(Page(driver).wait_for_page_to_load(), Page)
 
 
+@pytest.mark.filterwarnings("ignore::DeprecationWarning")
 def test_bwc_selenium(page, driver_interface):
     """ Backwards compatibility with old selenium attribute """
     driver = page.selenium
